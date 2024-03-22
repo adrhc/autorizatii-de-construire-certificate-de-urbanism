@@ -6,6 +6,8 @@ Use this to search for construction authorizations or town planning certificates
 
 java -jar autorizatii-de-construire-certificate-de-urbanism/target/autorizatii-de-construire-certificate-de-urbanism-1.0-SNAPSHOT.jar --spring.config.additional-location=$HOME/autorizatii-de-construire-certificate-de-urbanism/config/'
 
+java -jar autorizatii-de-construire-certificate-de-urbanism/target/autorizatii-de-construire-certificate-de-urbanism-1.0-SNAPSHOT.jar --spring.config.additional-location=$HOME/autorizatii-de-construire-certificate-de-urbanism/config/' search gheorghieni
+
 # git setup
 
 git rm -r --cached .idea
