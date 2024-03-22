@@ -47,8 +47,8 @@ class UrlContentIndexManagerIT {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Gheorghieni",
-            "Gheorghieni 15-17", "Gheorghieni 27-29-29A-31-33",
+    @ValueSource(strings = {"Gheorghieni", "Gheorhieni", "GheorgXhieni", "GheorXhieni", "Ghoerghieni",
+            "heorghien", "GheorghieXX", "Gheorghieni 15-17", "Gheorghieni 27-29-29A-31-33",
             "Gheorghieni 19", "Gheorghieni 20", "Gheorghieni 21", "Gheorghieni 22", "Gheorghieni 23",
             "Gheorghieni 24", "Gheorghieni 26", "Gheorghieni 27", "Gheorghieni 28", "Gheorghieni 29"})
     void gheorghieniMatches(String words) throws IOException {
