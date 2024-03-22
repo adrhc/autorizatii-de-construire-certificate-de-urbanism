@@ -5,11 +5,12 @@ logging.level.ro.go.adrhc: DEBUG
 feign.client.config.default.loggerLevel: BASIC
 #logging.file.name: m3u8-playlists-manager.log
 
-metadata-loading-threads: 1c
-
-supported-extensions:
-  - jpeg
-  - jpg
-
 #index:
 #  path: ${user.home}/index-autorizatii-de-construire-certificate-de-urbanism
+
+# href=\"([^\"]+)\"\\s+class=\"button-read-more\"
+link-pattern: https:([^:"]+)\.pdf
+
+targets:
+  - id: sector5
+    start: https://sector5.ro/autorizatii-de-construire-certificate-de-urbanism/
