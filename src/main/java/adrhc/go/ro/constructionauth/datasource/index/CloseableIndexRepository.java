@@ -10,6 +10,6 @@ import ro.go.adrhc.persistence.lucene.typedindex.TypedIndexContext;
 @RequiredArgsConstructor
 @Slf4j
 public class CloseableIndexRepository {
-    private final TypedIndexContext<MontlyPdfIndexRecord> typedIndexContext;
-    private final IndexRepository<MonthYear, MontlyPdfIndexRecord> indexRepository;
+    private final TypedIndexContext<UrlContentIndexRecord> typedIndexContext;
+    private final IndexRepository<String, UrlContentIndexRecord> indexRepository;
 }

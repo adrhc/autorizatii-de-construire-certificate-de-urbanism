@@ -13,15 +13,15 @@ import java.io.IOException;
 public class CloseableIndexRepositoryFactory {
     private final IndexProperties indexProperties;
 
-    private static TypedIndexContext<MontlyPdfIndexRecord>
+    private static TypedIndexContext<UrlContentIndexRecord>
     createTypedIndexContext(IndexProperties indexProperties) throws IOException {
         return TypedIndexFactoriesParamsFactory.create(
-                MontlyPdfIndexRecord.class, MontlyPdfFieldType.class,
+                UrlContentIndexRecord.class, UrlContentFieldType.class,
                 indexProperties.getPath());
     }
 
     public CloseableIndexRepository create() throws IOException {
-        TypedIndexContext<MontlyPdfIndexRecord>
+        TypedIndexContext<UrlContentIndexRecord>
                 typedIndexContext = createTypedIndexContext(indexProperties);
         return new CloseableIndexRepository(typedIndexContext,
                 IndexRepositoryFactory.create(typedIndexContext));

@@ -13,7 +13,7 @@ public class IndexConfig {
     private final CloseableIndexRepositoryFactory closeableIndexRepositoryFactory;
 
     @Bean
-    public IndexRepository<MonthYear, MontlyPdfIndexRecord>
+    public IndexRepository<String, UrlContentIndexRecord>
     indexRepository() throws IOException {
         return closeableIndexRepository().getIndexRepository();
     }

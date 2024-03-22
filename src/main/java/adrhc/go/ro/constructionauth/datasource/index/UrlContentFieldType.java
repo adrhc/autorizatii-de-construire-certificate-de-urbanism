@@ -14,16 +14,15 @@ import static ro.go.adrhc.persistence.lucene.typedcore.field.TypedFieldSerde.str
 @Getter
 @Accessors(fluent = true)
 @RequiredArgsConstructor
-public enum MontlyPdfFieldType implements TypedField<MontlyPdfIndexRecord> {
-    moment(KEYWORD, stringField(MontlyPdfIndexRecord::getId, it -> MonthYear.parse((String) it)), true),
-    content(PHRASE, stringField(MontlyPdfIndexRecord::content)),
-    fileName(KEYWORD, stringField(MontlyPdfIndexRecord::fileName));
+public enum UrlContentFieldType implements TypedField<UrlContentIndexRecord> {
+    url(KEYWORD, stringField(UrlContentIndexRecord::getId), true),
+    content(PHRASE, stringField(UrlContentIndexRecord::text));
 
     private final FieldType fieldType;
-    private final TypedFieldSerde<MontlyPdfIndexRecord> fieldSerde;
+    private final TypedFieldSerde<UrlContentIndexRecord> fieldSerde;
     private final boolean isIdField;
 
-    MontlyPdfFieldType(FieldType fieldType, TypedFieldSerde<MontlyPdfIndexRecord> fieldSerde) {
+    UrlContentFieldType(FieldType fieldType, TypedFieldSerde<UrlContentIndexRecord> fieldSerde) {
         this.fieldType = fieldType;
         this.fieldSerde = fieldSerde;
         this.isIdField = false;
