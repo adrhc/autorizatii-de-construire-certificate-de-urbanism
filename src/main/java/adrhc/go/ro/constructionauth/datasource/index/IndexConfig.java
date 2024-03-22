@@ -3,6 +3,7 @@ package adrhc.go.ro.constructionauth.datasource.index;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import ro.go.adrhc.persistence.lucene.core.token.TokenizationUtils;
 import ro.go.adrhc.persistence.lucene.typedindex.IndexRepository;
 
 import java.io.IOException;
@@ -16,6 +17,12 @@ public class IndexConfig {
     public IndexRepository<String, UrlContentIndexRecord>
     indexRepository() throws IOException {
         return closeableIndexRepository().getIndexRepository();
+    }
+
+    @Bean
+    public TokenizationUtils tokenizationUtils() throws IOException {
+        return new TokenizationUtils(
+                closeableIndexRepository().getTypedIndexContext().getAnalyzer());
     }
 
     @Bean

@@ -48,7 +48,7 @@ public class PdfTextExtractor {
 
     private Optional<PDDocument> loadPDF(byte[] bytes) {
         try {
-        return Optional.of(Loader.loadPDF(bytes));
+            return Optional.of(Loader.loadPDF(bytes));
         } catch (IOException ioe) {
             log.error(ioe.getMessage(), ioe);
         }
