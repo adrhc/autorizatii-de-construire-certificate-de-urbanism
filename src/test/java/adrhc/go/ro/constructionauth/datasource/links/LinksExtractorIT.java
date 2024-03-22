@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
 class LinksExtractorIT {
-    @Value("links-source")
+    @Value("${links-source}")
     private String linksSource;
     @Autowired
     private LinksExtractor linksExtractor;
