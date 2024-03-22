@@ -54,6 +54,12 @@ class UrlContentIndexManagerIT {
         // "MARIAN" wrongly spelled as "MARI"
         matches = findAllMatchesByContent("TUDOR MARI ȘI TUDOR MIHAELA RUXANDRA");
         assertThat(matches).isNotEmpty();
+        // "MARIAN" wrongly spelled as "MARIXX"
+        matches = findAllMatchesByContent("TUDOR MARIXX ȘI TUDOR MIHAELA RUXANDRA");
+        assertThat(matches).isNotEmpty();
+        // "MARIAN" wrongly spelled as "MARXXX"
+        matches = findAllMatchesByContent("TUDOR MARXXX ȘI TUDOR MIHAELA RUXANDRA");
+        assertThat(matches).isEmpty();
         // "MARIAN" wrongly spelled as "ARAI"
         matches = findAllMatchesByContent("TUDOR ARAI ȘI TUDOR MIHAELA RUXANDRA");
         assertThat(matches).isEmpty();
