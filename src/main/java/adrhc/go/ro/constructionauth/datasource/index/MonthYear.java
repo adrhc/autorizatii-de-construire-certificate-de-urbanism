@@ -1,4 +1,4 @@
-package adrhc.go.ro.datasource.index;
+package adrhc.go.ro.constructionauth.datasource.index;
 
 public record MonthYear(int year, int month) implements Comparable<MonthYear> {
     public static MonthYear parse(String monthYear) {

@@ -1,4 +1,4 @@
-package adrhc.go.ro.datasource.index;
+package adrhc.go.ro.constructionauth.datasource.index;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ro.go.adrhc.persistence.lucene.typedcore.serde.Identifiable;

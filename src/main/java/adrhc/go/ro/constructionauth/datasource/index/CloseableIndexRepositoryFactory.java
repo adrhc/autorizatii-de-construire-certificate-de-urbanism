@@ -1,4 +1,4 @@
-package adrhc.go.ro.datasource.index;
+package adrhc.go.ro.constructionauth.datasource.index;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
