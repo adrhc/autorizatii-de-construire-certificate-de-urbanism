@@ -17,7 +17,7 @@ public class CloseableIndexRepositoryFactory {
     createTypedIndexContext(IndexProperties indexProperties) throws IOException {
         return TypedIndexFactoriesParamsFactory.create(
                 MontlyPdfIndexRecord.class, MontlyPdfFieldType.class,
-                indexProperties.getIndexPath());
+                indexProperties.getPath());
     }
 
     public CloseableIndexRepository create() throws IOException {
