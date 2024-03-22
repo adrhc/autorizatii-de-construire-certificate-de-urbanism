@@ -1,7 +1,6 @@
 package adrhc.go.ro.constructionauth.datasource.index;
 
 import adrhc.go.ro.constructionauth.ExcludeShellAutoConfiguration;
-import adrhc.go.ro.constructionauth.managers.UrlContentIndexManager;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.TestInstance;

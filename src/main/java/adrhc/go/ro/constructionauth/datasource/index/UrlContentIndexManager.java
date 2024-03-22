@@ -1,6 +1,5 @@
-package adrhc.go.ro.constructionauth.managers;
+package adrhc.go.ro.constructionauth.datasource.index;
 
-import adrhc.go.ro.constructionauth.datasource.index.UrlContentIndexRecord;
 import adrhc.go.ro.constructionauth.datasource.text.UrlContentProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
