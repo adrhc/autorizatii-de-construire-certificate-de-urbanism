@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.shell.Shell;
@@ -19,13 +20,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 @MockBean(classes = {Shell.class})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
-class LinksProviderIT {
+class LinksExtractorIT {
+    @Value("links-source")
+    private String linksSource;
     @Autowired
-    private LinksProvider linksProvider;
+    private LinksExtractor linksExtractor;
 
     @Test
-    void loadLinks() throws IOException {
-        Set<String> links = linksProvider.loadLinks();
+    void load() throws IOException {
+        Set<String> links = linksExtractor.loadLinks(linksSource);
         assertThat(links).isNotEmpty();
     }
 }

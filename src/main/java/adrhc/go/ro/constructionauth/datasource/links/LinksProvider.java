@@ -1,19 +1,16 @@
 package adrhc.go.ro.constructionauth.datasource.links;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Set;
 
-@Component
 @RequiredArgsConstructor
 public class LinksProvider {
-    private final PageLoader pageLoader;
-    private final LinksParser pageParser;
+    private final String url;
+    private final LinksExtractor linksExtractor;
 
-    public Set<String> loadLinks(String urlString) throws IOException {
-        String pageText = pageLoader.load(urlString);
-        return pageParser.parseLinks(pageText);
+    public Set<String> loadLinks() throws IOException {
+        return linksExtractor.loadLinks(url);
     }
 }
