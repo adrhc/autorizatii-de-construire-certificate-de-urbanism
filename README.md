@@ -1,5 +1,6 @@
-# git cleanup
+# git setup
 git rm -r --cached .idea
+git branch --set-upstream-to=origin/master master
 
 # maven project creation
 
