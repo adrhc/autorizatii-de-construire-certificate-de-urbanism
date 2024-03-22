@@ -37,7 +37,12 @@ class UrlContentIndexManagerIT {
     private ContentQueries contentQueries;
 
     private static void showMatches(String words, Collection<UrlContentIndexRecord> matches) {
-        log.info("\nMatches for \"{}\":\n{}", words, concat(UrlContentIndexRecord::url, matches));
+        String concatenatedMatches = concat(UrlContentIndexRecord::url, matches);
+        if (concatenatedMatches.isBlank()) {
+            log.info("\nMatches for \"{}\": none", words);
+        } else {
+            log.info("\nMatches for \"{}\":\n{}", words, concatenatedMatches);
+        }
     }
 
     @Test
