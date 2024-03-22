@@ -8,6 +8,8 @@ java -jar autorizatii-de-construire-certificate-de-urbanism/target/autorizatii-d
 
 java -jar autorizatii-de-construire-certificate-de-urbanism/target/autorizatii-de-construire-certificate-de-urbanism-1.0-SNAPSHOT.jar --spring.config.additional-location=$HOME/autorizatii-de-construire-certificate-de-urbanism/config/' search gheorghieni
 
+java -jar autorizatii-de-construire-certificate-de-urbanism/target/autorizatii-de-construire-certificate-de-urbanism-1.0-SNAPSHOT.jar --spring.config.additional-location=$HOME/autorizatii-de-construire-certificate-de-urbanism/config/' search-last-update gheorghieni
+
 # git setup
 
 git rm -r --cached .idea
