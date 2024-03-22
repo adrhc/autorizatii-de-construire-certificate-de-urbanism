@@ -4,12 +4,15 @@ import adrhc.go.ro.constructionauth.datasource.links.LinksProvider;
 import adrhc.go.ro.constructionauth.lib.PdfTextExtractor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+@Component
 @RequiredArgsConstructor
 @Slf4j
 public class UrlContentProvider {
@@ -17,8 +20,13 @@ public class UrlContentProvider {
     private final PdfTextExtractor pdfTextExtractor;
 
     public Stream<UrlContent> load() {
+        return load(it -> true);
+    }
+
+    public Stream<UrlContent> load(Predicate<String> linksFilter) {
         return linkProviders.stream()
                 .flatMap(this::loadLinks)
+                .filter(linksFilter)
                 .map(this::extractText)
                 .flatMap(Optional::stream);
     }
