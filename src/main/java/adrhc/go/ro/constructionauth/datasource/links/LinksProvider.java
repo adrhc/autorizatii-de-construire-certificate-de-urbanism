@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
-public class PageLinksProvider {
+public class LinksProvider {
     private final PageLoader pageLoader;
     private final LinksParser pageParser;
 

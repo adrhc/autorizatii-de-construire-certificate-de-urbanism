@@ -19,10 +19,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 @MockBean(classes = {Shell.class})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
-class PageLinksProviderIT {
+class LinksProviderIT {
     private static final String URL = "https://sector5.ro/autorizatii-de-construire-certificate-de-urbanism";
     @Autowired
-    private PageLinksProvider linksProvider;
+    private LinksProvider linksProvider;
 
     @Test
     void load() throws IOException {
