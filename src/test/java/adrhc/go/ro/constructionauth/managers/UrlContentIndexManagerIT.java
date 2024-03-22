@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -17,7 +19,6 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static ro.go.adrhc.util.text.StringUtils.concat;
@@ -45,73 +46,58 @@ class UrlContentIndexManagerIT {
         }
     }
 
-    @Test
-    void gheorghieniQuery() throws IOException {
+    @ParameterizedTest
+    @ValueSource(strings = {"Gheorghieni",
+            "Gheorghieni 15-17", "Gheorghieni 27-29-29A-31-33",
+            "Gheorghieni 19", "Gheorghieni 20", "Gheorghieni 21", "Gheorghieni 22", "Gheorghieni 23",
+            "Gheorghieni 24", "Gheorghieni 26", "Gheorghieni 27", "Gheorghieni 28", "Gheorghieni 29"})
+    void gheorghieniMatches(String words) throws IOException {
         urlContentIndexManager.updateIndex();
 
-        List<UrlContentIndexRecord> matches = findAllMatchesByContent("Gheorghieni");
-        showMatches("Gheorghieni", matches);
+        List<UrlContentIndexRecord> matches = findAllMatchesByContent(words);
+        showMatches(words, matches);
         assertThat(matches).isNotEmpty();
+    }
 
-        matches = findAllMatchesByContent("Gheorghieni 15-17");
-        showMatches("Gheorghieni 15-17", matches);
-        assertThat(matches).isNotEmpty();
+    @ParameterizedTest
+    @ValueSource(strings = {"Gheorghieni 19-25", "Gheorghieni 30",
+            "Gheorghieni 31", "Gheorghieni 32", "Gheorghieni 33"})
+    void gheorghieniMissed(String words) throws IOException {
+        urlContentIndexManager.updateIndex();
 
-        matches = findAllMatchesByContent("Gheorghieni 27-29-29A-31-33");
-        showMatches("Gheorghieni 27-29-29A-31-33", matches);
-        assertThat(matches).isNotEmpty();
-
-        matches = findAllMatchesByContent("Gheorghieni 19-25");
-        showMatches("Gheorghieni 19-25", matches);
+        List<UrlContentIndexRecord> matches = findAllMatchesByContent(words);
+        showMatches(words, matches);
         assertThat(matches).isEmpty();
     }
 
-    @Test
-    void indexQuery() throws IOException {
+    @ParameterizedTest
+    @ValueSource(strings = {"TUDOR MARIAN ȘI TUDOR MIHAELA RUXANDRA",
+            "TUDOR MARAN ȘI TUDOR MIHAELA RUXANDRA", "TUDOR MARXIAN ȘI TUDOR MIHAELA RUXANDRA",
+            "TUDOR MARXAN ȘI TUDOR MIHAELA RUXANDRA", "TUDOR MARAIN ȘI TUDOR MIHAELA RUXANDRA",
+            "TUDOR MARI ȘI TUDOR MIHAELA RUXANDRA", "TUDOR MARIXX ȘI TUDOR MIHAELA RUXANDRA"})
+    void matching(String words) throws IOException {
         urlContentIndexManager.updateIndex();
 
-        // original text
-        List<UrlContentIndexRecord> matches = findAllMatchesByContent("TUDOR MARIAN ȘI TUDOR MIHAELA RUXANDRA");
+        List<UrlContentIndexRecord> matches = findAllMatchesByContent(words);
+        showMatches(words, matches);
         assertThat(matches).isNotEmpty();
+    }
 
-        // "MARIAN" wrongly spelled as "MARAN"
-        matches = findAllMatchesByContent("TUDOR MARAN ȘI TUDOR MIHAELA RUXANDRA");
-        assertThat(matches).isNotEmpty();
+    @ParameterizedTest
+    @ValueSource(strings = {"TUDOR MARXXX ȘI TUDOR MIHAELA RUXANDRA",
+            "TUDOR ARAI ȘI TUDOR MIHAELA RUXANDRA"})
+    void notMatching(String words) throws IOException {
+        urlContentIndexManager.updateIndex();
 
-        // "MARIAN" wrongly spelled as "MARXIAN"
-        matches = findAllMatchesByContent("TUDOR MARXIAN ȘI TUDOR MIHAELA RUXANDRA");
-        assertThat(matches).isNotEmpty();
-
-        // "MARIAN" wrongly spelled as "MARXAN"
-        matches = findAllMatchesByContent("TUDOR MARXAN ȘI TUDOR MIHAELA RUXANDRA");
-        assertThat(matches).isNotEmpty();
-
-        // "MARIAN" wrongly spelled as "MARAIN"
-        matches = findAllMatchesByContent("TUDOR MARAIN ȘI TUDOR MIHAELA RUXANDRA");
-        assertThat(matches).isNotEmpty();
-
-        // "MARIAN" wrongly spelled as "MARI"
-        matches = findAllMatchesByContent("TUDOR MARI ȘI TUDOR MIHAELA RUXANDRA");
-        assertThat(matches).isNotEmpty();
-
-        // "MARIAN" wrongly spelled as "MARIXX"
-        matches = findAllMatchesByContent("TUDOR MARIXX ȘI TUDOR MIHAELA RUXANDRA");
-        assertThat(matches).isNotEmpty();
-
-        // "MARIAN" wrongly spelled as "MARXXX"
-        matches = findAllMatchesByContent("TUDOR MARXXX ȘI TUDOR MIHAELA RUXANDRA");
-        assertThat(matches).isEmpty();
-
-        // "MARIAN" wrongly spelled as "ARAI"
-        matches = findAllMatchesByContent("TUDOR ARAI ȘI TUDOR MIHAELA RUXANDRA");
+        List<UrlContentIndexRecord> matches = findAllMatchesByContent(words);
         assertThat(matches).isEmpty();
     }
 
-    @Test
+    /*@Test
     void resetIndex() throws IOException {
         indexRepository.reset(Stream.of());
         updateIndex();
-    }
+    }*/
 
     @Test
     void updateIndex() throws IOException {
