@@ -13,11 +13,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.shell.Shell;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
 
+import static adrhc.go.ro.constructionauth.util.DebugUtils.showMatches;
 import static org.assertj.core.api.Assertions.assertThat;
-import static ro.go.adrhc.util.text.StringUtils.concat;
 
 @Disabled("requires the index to be present")
 @SpringBootTest
@@ -30,15 +29,6 @@ class UrlContentIndexSearcherIT {
     private UrlContentIndexManager urlContentIndexManager;
     @Autowired
     private UrlContentIndexSearcher searcher;
-
-    private static void showMatches(String words, Collection<UrlContentIndexRecord> matches) {
-        String concatenatedMatches = concat(UrlContentIndexRecord::url, matches);
-        if (concatenatedMatches.isBlank()) {
-            log.info("\nMatches for \"{}\": none", words);
-        } else {
-            log.info("\nMatches for \"{}\":\n{}", words, concatenatedMatches);
-        }
-    }
 
     @ParameterizedTest
     @ValueSource(strings = {"Gheorghieni", "Gheorhieni", "GheorgXhieni", "GheorXhieni", "Ghoerghieni",
