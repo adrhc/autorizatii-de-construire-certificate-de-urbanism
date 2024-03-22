@@ -12,7 +12,7 @@ import org.springframework.shell.standard.ShellMethod;
 public class IndexManagementCommands {
     private final UrlContentIndexManager indexManager;
 
-    @ShellMethod(value = "Search the index.")
+    @ShellMethod(value = "Update the index.")
     public void updateIndex() {
         indexManager.updateIndex();
         log.debug("\nIndex updated!");
