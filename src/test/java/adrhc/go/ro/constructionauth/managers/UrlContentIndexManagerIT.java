@@ -47,6 +47,8 @@ class UrlContentIndexManagerIT {
 
     @Test
     void gheorghieniQuery() throws IOException {
+        urlContentIndexManager.updateIndex();
+
         List<UrlContentIndexRecord> matches = findAllMatchesByContent("Gheorghieni");
         showMatches("Gheorghieni", matches);
         assertThat(matches).isNotEmpty();
@@ -66,30 +68,40 @@ class UrlContentIndexManagerIT {
 
     @Test
     void indexQuery() throws IOException {
+        urlContentIndexManager.updateIndex();
+
         // original text
         List<UrlContentIndexRecord> matches = findAllMatchesByContent("TUDOR MARIAN ȘI TUDOR MIHAELA RUXANDRA");
         assertThat(matches).isNotEmpty();
+
         // "MARIAN" wrongly spelled as "MARAN"
         matches = findAllMatchesByContent("TUDOR MARAN ȘI TUDOR MIHAELA RUXANDRA");
         assertThat(matches).isNotEmpty();
+
         // "MARIAN" wrongly spelled as "MARXIAN"
         matches = findAllMatchesByContent("TUDOR MARXIAN ȘI TUDOR MIHAELA RUXANDRA");
         assertThat(matches).isNotEmpty();
+
         // "MARIAN" wrongly spelled as "MARXAN"
         matches = findAllMatchesByContent("TUDOR MARXAN ȘI TUDOR MIHAELA RUXANDRA");
         assertThat(matches).isNotEmpty();
+
         // "MARIAN" wrongly spelled as "MARAIN"
         matches = findAllMatchesByContent("TUDOR MARAIN ȘI TUDOR MIHAELA RUXANDRA");
         assertThat(matches).isNotEmpty();
+
         // "MARIAN" wrongly spelled as "MARI"
         matches = findAllMatchesByContent("TUDOR MARI ȘI TUDOR MIHAELA RUXANDRA");
         assertThat(matches).isNotEmpty();
+
         // "MARIAN" wrongly spelled as "MARIXX"
         matches = findAllMatchesByContent("TUDOR MARIXX ȘI TUDOR MIHAELA RUXANDRA");
         assertThat(matches).isNotEmpty();
+
         // "MARIAN" wrongly spelled as "MARXXX"
         matches = findAllMatchesByContent("TUDOR MARXXX ȘI TUDOR MIHAELA RUXANDRA");
         assertThat(matches).isEmpty();
+
         // "MARIAN" wrongly spelled as "ARAI"
         matches = findAllMatchesByContent("TUDOR ARAI ȘI TUDOR MIHAELA RUXANDRA");
         assertThat(matches).isEmpty();
