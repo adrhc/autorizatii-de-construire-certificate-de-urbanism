@@ -1,7 +1,7 @@
 package adrhc.go.ro.constructionauth.datasource.index;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.lucene.queries.spans.SpanNearQuery;
+import org.apache.lucene.search.Query;
 import org.springframework.stereotype.Component;
 import ro.go.adrhc.persistence.lucene.core.token.TokenizationUtils;
 
@@ -16,8 +16,13 @@ import static adrhc.go.ro.constructionauth.datasource.index.UrlContentFieldType.
 public class ContentQueries {
     private final TokenizationUtils tokenizationUtils;
 
-    public SpanNearQuery create(String words) throws IOException {
-        return CONTENT_QUERIES.closeFuzzyTokens(tokenizeAsList(words));
+    public Query create(String words) throws IOException {
+        List<String> tokens = tokenizeAsList(words);
+        if (tokens.size() == 1) {
+            return CONTENT_QUERIES.fuzzy(tokens.get(0));
+        } else {
+            return CONTENT_QUERIES.closeFuzzyTokens(tokens);
+        }
     }
 
     private List<String> tokenizeAsList(String words) throws IOException {

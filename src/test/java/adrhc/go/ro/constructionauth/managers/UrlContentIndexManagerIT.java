@@ -14,11 +14,13 @@ import org.springframework.shell.Shell;
 import ro.go.adrhc.persistence.lucene.typedindex.IndexRepository;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static ro.go.adrhc.util.text.StringUtils.concat;
 
 @Disabled("very intensive processing")
 @SpringBootTest
@@ -33,6 +35,29 @@ class UrlContentIndexManagerIT {
     private IndexRepository<String, UrlContentIndexRecord> indexRepository;
     @Autowired
     private ContentQueries contentQueries;
+
+    private static void showMatches(String words, Collection<UrlContentIndexRecord> matches) {
+        log.info("\nMatches for \"{}\":\n{}", words, concat(UrlContentIndexRecord::url, matches));
+    }
+
+    @Test
+    void gheorghieniQuery() throws IOException {
+        List<UrlContentIndexRecord> matches = findAllMatchesByContent("Gheorghieni");
+        showMatches("Gheorghieni", matches);
+        assertThat(matches).isNotEmpty();
+
+        matches = findAllMatchesByContent("Gheorghieni 15-17");
+        showMatches("Gheorghieni 15-17", matches);
+        assertThat(matches).isNotEmpty();
+
+        matches = findAllMatchesByContent("Gheorghieni 27-29-29A-31-33");
+        showMatches("Gheorghieni 27-29-29A-31-33", matches);
+        assertThat(matches).isNotEmpty();
+
+        matches = findAllMatchesByContent("Gheorghieni 19-25");
+        showMatches("Gheorghieni 19-25", matches);
+        assertThat(matches).isEmpty();
+    }
 
     @Test
     void indexQuery() throws IOException {
@@ -65,10 +90,6 @@ class UrlContentIndexManagerIT {
         assertThat(matches).isEmpty();
     }
 
-    private List<UrlContentIndexRecord> findAllMatchesByContent(String words) throws IOException {
-        return indexRepository.findAllMatches(contentQueries.create(words));
-    }
-
     @Test
     void resetIndex() throws IOException {
         indexRepository.reset(Stream.of());
@@ -83,5 +104,9 @@ class UrlContentIndexManagerIT {
         assertThat(indexRecordOptional).isNotEmpty();
         UrlContentIndexRecord indexRecord = indexRecordOptional.get();
         log.info("\n{}:\n{}", indexRecord.url(), indexRecord.text());
+    }
+
+    private List<UrlContentIndexRecord> findAllMatchesByContent(String words) throws IOException {
+        return indexRepository.findAllMatches(contentQueries.create(words));
     }
 }
