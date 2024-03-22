@@ -1,4 +1,4 @@
-package adrhc.go.ro.constructionauth.datasource.pages;
+package adrhc.go.ro.constructionauth.datasource.links;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
