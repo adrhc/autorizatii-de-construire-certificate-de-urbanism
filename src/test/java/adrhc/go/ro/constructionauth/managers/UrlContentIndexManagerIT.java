@@ -31,8 +31,13 @@ class UrlContentIndexManagerIT {
     private IndexRepository<String, UrlContentIndexRecord> indexRepository;
 
     @Test
-    void updateIndex() throws IOException {
+    void resetIndex() throws IOException {
         indexRepository.reset(Stream.of());
+        updateIndex();
+    }
+
+    @Test
+    void updateIndex() throws IOException {
         urlContentIndexManager.updateIndex();
         Optional<UrlContentIndexRecord> indexRecordOptional =
                 indexRepository.findById("https://sector5.ro/media/2024/02/LISTA_CERTIFICATE_URBANISM_IAN-2024.pdf");
