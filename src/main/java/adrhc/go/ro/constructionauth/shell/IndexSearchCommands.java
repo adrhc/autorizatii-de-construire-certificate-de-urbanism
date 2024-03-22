@@ -26,7 +26,7 @@ public class IndexSearchCommands {
     @ShellMethod(value = "Update then search the index.")
     public void searchLastUpdate(String words) throws IOException {
         indexManager.updateIndex();
-        log.debug("\nIndex updated!");
+        log.info("\nIndex updated!");
         showMatches(words, searcher.search(words));
     }
 }

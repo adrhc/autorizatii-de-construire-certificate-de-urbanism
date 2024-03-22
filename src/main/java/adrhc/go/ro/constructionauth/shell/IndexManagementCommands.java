@@ -15,6 +15,6 @@ public class IndexManagementCommands {
     @ShellMethod(value = "Update the index.", key = {"update", "update-index"})
     public void updateIndex() {
         indexManager.updateIndex();
-        log.debug("\nIndex updated!");
+        log.info("\nIndex updated!");
     }
 }
