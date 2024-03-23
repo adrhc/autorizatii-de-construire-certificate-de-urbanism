@@ -1,8 +1,6 @@
-package adrhc.go.ro.constructionauth.managers;
+package adrhc.go.ro.constructionauth.datasource.index;
 
 import adrhc.go.ro.constructionauth.ExcludeShellAutoConfiguration;
-import adrhc.go.ro.constructionauth.datasource.index.UrlContentIndexManager;
-import adrhc.go.ro.constructionauth.datasource.index.UrlContentIndexRecord;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -25,9 +23,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @MockBean(classes = {Shell.class})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
-class UrlContentIndexManagerIT {
+class UrlContentIndexServiceIT {
     @Autowired
-    private UrlContentIndexManager urlContentIndexManager;
+    private UrlContentIndexService urlContentIndexService;
     @Autowired
     private IndexRepository<String, UrlContentIndexRecord> indexRepository;
 
@@ -39,7 +37,7 @@ class UrlContentIndexManagerIT {
 
     @Test
     void updateIndex() throws IOException {
-        urlContentIndexManager.updateIndex();
+        urlContentIndexService.updateIndex();
         Optional<UrlContentIndexRecord> indexRecordOptional =
                 indexRepository.findById("https://sector5.ro/media/2024/02/LISTA_CERTIFICATE_URBANISM_IAN-2024.pdf");
         assertThat(indexRecordOptional).isNotEmpty();

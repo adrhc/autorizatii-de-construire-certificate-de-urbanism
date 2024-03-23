@@ -1,6 +1,6 @@
 package adrhc.go.ro.constructionauth.shell;
 
-import adrhc.go.ro.constructionauth.datasource.index.UrlContentIndexManager;
+import adrhc.go.ro.constructionauth.datasource.index.UrlContentIndexService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.shell.standard.ShellComponent;
@@ -10,7 +10,7 @@ import org.springframework.shell.standard.ShellMethod;
 @RequiredArgsConstructor
 @Slf4j
 public class IndexManagementCommands {
-    private final UrlContentIndexManager indexManager;
+    private final UrlContentIndexService indexManager;
 
     @ShellMethod(value = "Update the index.", key = {"update", "update-index"})
     public void updateIndex() {

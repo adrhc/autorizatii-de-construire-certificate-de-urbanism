@@ -11,7 +11,7 @@ import java.io.IOException;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UrlContentIndexManager {
+public class UrlContentIndexService {
     private final IndexRepository<String, UrlContentIndexRecord> indexRepository;
     private final UrlContentProvider urlContentProvider;
 

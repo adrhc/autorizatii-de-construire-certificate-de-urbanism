@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Slf4j
 class UrlContentIndexSearcherIT {
     @Autowired
-    private UrlContentIndexManager urlContentIndexManager;
+    private UrlContentIndexService urlContentIndexService;
     @Autowired
     private UrlContentIndexSearcher searcher;
 
@@ -35,7 +35,7 @@ class UrlContentIndexSearcherIT {
             "Gheorghieni 19", "Gheorghieni 20", "Gheorghieni 21", "Gheorghieni 22", "Gheorghieni 23",
             "Gheorghieni 24", "Gheorghieni 26", "Gheorghieni 27", "Gheorghieni 28", "Gheorghieni 29"})
     void gheorghieniMatches(String words) throws IOException {
-        urlContentIndexManager.updateIndex();
+        urlContentIndexService.updateIndex();
 
         List<UrlContentIndexRecord> matches = searcher.search(words);
         showMatches(words, matches);
@@ -46,7 +46,7 @@ class UrlContentIndexSearcherIT {
     @ValueSource(strings = {"Gheorghieni 19-25", "Gheorghieni 30",
             "Gheorghieni 31", "Gheorghieni 32", "Gheorghieni 33"})
     void gheorghieniMissed(String words) throws IOException {
-        urlContentIndexManager.updateIndex();
+        urlContentIndexService.updateIndex();
 
         List<UrlContentIndexRecord> matches = searcher.search(words);
         showMatches(words, matches);
@@ -59,7 +59,7 @@ class UrlContentIndexSearcherIT {
             "TUDOR MARXAN ȘI TUDOR MIHAELA RUXANDRA", "TUDOR MARAIN ȘI TUDOR MIHAELA RUXANDRA",
             "TUDOR MARI ȘI TUDOR MIHAELA RUXANDRA", "TUDOR MARIXX ȘI TUDOR MIHAELA RUXANDRA"})
     void matching(String words) throws IOException {
-        urlContentIndexManager.updateIndex();
+        urlContentIndexService.updateIndex();
 
         List<UrlContentIndexRecord> matches = searcher.search(words);
         showMatches(words, matches);
@@ -70,7 +70,7 @@ class UrlContentIndexSearcherIT {
     @ValueSource(strings = {"TUDOR MARXXX ȘI TUDOR MIHAELA RUXANDRA",
             "TUDOR ARAI ȘI TUDOR MIHAELA RUXANDRA"})
     void notMatching(String words) throws IOException {
-        urlContentIndexManager.updateIndex();
+        urlContentIndexService.updateIndex();
 
         List<UrlContentIndexRecord> matches = searcher.search(words);
         assertThat(matches).isEmpty();

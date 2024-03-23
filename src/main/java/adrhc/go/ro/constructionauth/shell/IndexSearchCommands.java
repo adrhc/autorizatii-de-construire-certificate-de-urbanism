@@ -1,7 +1,7 @@
 package adrhc.go.ro.constructionauth.shell;
 
-import adrhc.go.ro.constructionauth.datasource.index.UrlContentIndexManager;
 import adrhc.go.ro.constructionauth.datasource.index.UrlContentIndexSearcher;
+import adrhc.go.ro.constructionauth.datasource.index.UrlContentIndexService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.shell.standard.ShellComponent;
@@ -15,7 +15,7 @@ import static adrhc.go.ro.constructionauth.util.DebugUtils.showMatches;
 @RequiredArgsConstructor
 @Slf4j
 public class IndexSearchCommands {
-    private final UrlContentIndexManager indexManager;
+    private final UrlContentIndexService indexManager;
     private final UrlContentIndexSearcher searcher;
 
     @ShellMethod(value = "Search the index.")
