@@ -15,7 +15,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>adrhc.go.ro</groupId>
+    <groupId>ro.go.adrhc</groupId>
     <artifactId>autorizatii-de-construire-certificate-de-urbanism</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>

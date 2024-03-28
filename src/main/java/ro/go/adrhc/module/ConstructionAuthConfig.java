@@ -1,4 +1,4 @@
-package adrhc.go.ro.module;
+package ro.go.adrhc.module;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
