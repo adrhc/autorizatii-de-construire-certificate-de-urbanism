@@ -6,10 +6,9 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.shell.Shell;
-import ro.go.adrhc.constructionauth.ExcludeShellAutoConfiguration;
+import ro.go.adrhc.constructionauth.ConstructionAuthConfig;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,9 +17,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static ro.go.adrhc.constructionauth.util.DebugUtils.showMatches;
 
 @Disabled("requires the index to be present")
-@SpringBootTest
-@ExcludeShellAutoConfiguration
-@MockBean(classes = {Shell.class})
+@EnableConfigurationProperties
+@SpringBootTest(classes = ConstructionAuthConfig.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
 class UrlContentIndexSearcherIT {
