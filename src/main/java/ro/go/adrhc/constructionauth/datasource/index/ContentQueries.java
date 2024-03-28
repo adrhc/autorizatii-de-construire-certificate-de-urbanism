@@ -19,7 +19,12 @@ public class ContentQueries {
     public Query create(String words) throws IOException {
         List<String> tokens = tokenizeAsList(words);
         if (tokens.size() == 1) {
-            return CONTENT_QUERIES.fuzzy(tokens.get(0));
+            String token = tokens.get(0);
+            if (token.length() <= 2) {
+                return CONTENT_QUERIES.tokenEquals(token);
+            } else {
+                return CONTENT_QUERIES.fuzzy(tokens.get(0));
+            }
         } else {
             return CONTENT_QUERIES.closeFuzzyTokens(tokens);
         }
