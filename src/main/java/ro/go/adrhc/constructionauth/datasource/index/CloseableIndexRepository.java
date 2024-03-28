@@ -1,6 +1,5 @@
 package ro.go.adrhc.constructionauth.datasource.index;
 
-import jakarta.annotation.PreDestroy;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,11 +15,6 @@ import java.io.IOException;
 public class CloseableIndexRepository implements Closeable {
     private final TypedIndexContext<UrlContentIndexRecord> typedIndexContext;
     private final IndexRepository<String, UrlContentIndexRecord> indexRepository;
-
-    @PreDestroy
-    protected void preDestroy() throws IOException {
-        close();
-    }
 
     @Override
     public void close() throws IOException {
