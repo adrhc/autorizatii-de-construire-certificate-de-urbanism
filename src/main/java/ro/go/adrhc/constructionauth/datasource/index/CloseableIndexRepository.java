@@ -1,4 +1,4 @@
-package adrhc.go.ro.constructionauth.datasource.index;
+package ro.go.adrhc.constructionauth.datasource.index;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

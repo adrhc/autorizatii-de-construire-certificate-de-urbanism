@@ -1,6 +1,5 @@
-package adrhc.go.ro.constructionauth.datasource.index;
+package ro.go.adrhc.constructionauth.datasource.index;
 
-import adrhc.go.ro.constructionauth.ExcludeShellAutoConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -9,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.shell.Shell;
+import ro.go.adrhc.constructionauth.ExcludeShellAutoConfiguration;
 import ro.go.adrhc.persistence.lucene.typedindex.IndexRepository;
 
 import java.io.IOException;

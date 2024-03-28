@@ -1,4 +1,4 @@
-package adrhc.go.ro.constructionauth;
+package ro.go.adrhc.constructionauth;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.shell.boot.JLineShellAutoConfiguration;

@@ -1,10 +1,10 @@
-package adrhc.go.ro.constructionauth.datasource.text;
+package ro.go.adrhc.constructionauth.datasource.text;
 
-import adrhc.go.ro.constructionauth.datasource.links.LinksProvider;
-import adrhc.go.ro.constructionauth.lib.PdfTextExtractor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import ro.go.adrhc.constructionauth.datasource.links.LinksProvider;
+import ro.go.adrhc.constructionauth.lib.PdfTextExtractor;
 
 import java.io.IOException;
 import java.util.Collection;

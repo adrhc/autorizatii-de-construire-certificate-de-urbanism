@@ -1,8 +1,8 @@
-package adrhc.go.ro.constructionauth.datasource.links;
+package ro.go.adrhc.constructionauth.datasource.links;
 
-import adrhc.go.ro.constructionauth.lib.URLContentReader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import ro.go.adrhc.constructionauth.lib.URLContentReader;
 
 import java.io.IOException;
 import java.util.Set;

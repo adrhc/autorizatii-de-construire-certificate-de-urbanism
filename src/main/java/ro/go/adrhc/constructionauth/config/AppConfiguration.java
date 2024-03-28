@@ -1,4 +1,4 @@
-package adrhc.go.ro.constructionauth.config;
+package ro.go.adrhc.constructionauth.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;

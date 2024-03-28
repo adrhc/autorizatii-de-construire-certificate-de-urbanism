@@ -1,4 +1,4 @@
-package adrhc.go.ro.constructionauth;
+package ro.go.adrhc.constructionauth;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

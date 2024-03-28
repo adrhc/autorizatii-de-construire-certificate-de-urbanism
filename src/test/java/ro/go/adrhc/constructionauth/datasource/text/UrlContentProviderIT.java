@@ -1,6 +1,5 @@
-package adrhc.go.ro.constructionauth.datasource.text;
+package ro.go.adrhc.constructionauth.datasource.text;
 
-import adrhc.go.ro.constructionauth.ExcludeShellAutoConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.shell.Shell;
+import ro.go.adrhc.constructionauth.ExcludeShellAutoConfiguration;
 
 import java.util.Optional;
 

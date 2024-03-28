@@ -1,10 +1,10 @@
-package adrhc.go.ro.constructionauth.shell;
+package ro.go.adrhc.constructionauth.shell;
 
-import adrhc.go.ro.constructionauth.datasource.index.UrlContentIndexService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import ro.go.adrhc.constructionauth.datasource.index.UrlContentIndexService;
 
 @ShellComponent
 @RequiredArgsConstructor

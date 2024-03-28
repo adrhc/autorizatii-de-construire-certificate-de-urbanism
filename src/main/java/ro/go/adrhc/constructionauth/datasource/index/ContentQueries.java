@@ -1,4 +1,4 @@
-package adrhc.go.ro.constructionauth.datasource.index;
+package ro.go.adrhc.constructionauth.datasource.index;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.lucene.search.Query;
@@ -8,8 +8,8 @@ import ro.go.adrhc.persistence.lucene.core.token.TokenizationUtils;
 import java.io.IOException;
 import java.util.List;
 
-import static adrhc.go.ro.constructionauth.datasource.index.UrlContentFieldType.CONTENT_QUERIES;
-import static adrhc.go.ro.constructionauth.datasource.index.UrlContentFieldType.content;
+import static ro.go.adrhc.constructionauth.datasource.index.UrlContentFieldType.CONTENT_QUERIES;
+import static ro.go.adrhc.constructionauth.datasource.index.UrlContentFieldType.content;
 
 @Component
 @RequiredArgsConstructor

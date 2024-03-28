@@ -1,4 +1,4 @@
-package adrhc.go.ro.constructionauth.datasource.index;
+package ro.go.adrhc.constructionauth.datasource.index;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

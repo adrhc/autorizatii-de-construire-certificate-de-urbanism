@@ -1,9 +1,9 @@
-package adrhc.go.ro.constructionauth.datasource.index;
+package ro.go.adrhc.constructionauth.datasource.index;
 
-import adrhc.go.ro.constructionauth.datasource.text.UrlContentProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import ro.go.adrhc.constructionauth.datasource.text.UrlContentProvider;
 import ro.go.adrhc.persistence.lucene.typedindex.IndexRepository;
 
 import java.io.IOException;

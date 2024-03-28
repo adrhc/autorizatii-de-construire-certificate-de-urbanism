@@ -1,7 +1,7 @@
-package adrhc.go.ro.constructionauth.util;
+package ro.go.adrhc.constructionauth.util;
 
-import adrhc.go.ro.constructionauth.datasource.index.UrlContentIndexRecord;
 import lombok.extern.slf4j.Slf4j;
+import ro.go.adrhc.constructionauth.datasource.index.UrlContentIndexRecord;
 
 import java.util.Collection;
 

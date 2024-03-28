@@ -1,4 +1,4 @@
-package adrhc.go.ro.constructionauth.lib;
+package ro.go.adrhc.constructionauth.lib;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;

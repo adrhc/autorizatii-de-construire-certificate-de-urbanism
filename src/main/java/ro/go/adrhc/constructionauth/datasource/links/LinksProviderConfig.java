@@ -1,4 +1,4 @@
-package adrhc.go.ro.constructionauth.datasource.links;
+package ro.go.adrhc.constructionauth.datasource.links;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

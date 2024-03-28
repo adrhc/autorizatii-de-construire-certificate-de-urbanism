@@ -1,7 +1,7 @@
-package adrhc.go.ro.constructionauth.datasource.index;
+package ro.go.adrhc.constructionauth.datasource.index;
 
-import adrhc.go.ro.constructionauth.datasource.text.UrlContent;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import ro.go.adrhc.constructionauth.datasource.text.UrlContent;
 import ro.go.adrhc.persistence.lucene.typedcore.serde.Identifiable;
 
 public record UrlContentIndexRecord(String url, String text) implements Identifiable<String> {
