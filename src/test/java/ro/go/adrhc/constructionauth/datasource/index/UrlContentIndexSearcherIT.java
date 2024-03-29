@@ -28,25 +28,26 @@ class UrlContentIndexSearcherIT {
     private UrlContentIndexSearcher searcher;
 
     @ParameterizedTest
-    @ValueSource(strings = {"Gheorghieni", "Gheorhieni", "GheorgXhieni", "GheorXhieni", "Ghoerghieni",
-            "heorghien", "GheorghieXX", "Gheorghieni 15-17", "Gheorghieni 27-29-29A-31-33",
-            "Gheorghieni 19", "Gheorghieni 20", "Gheorghieni 21", "Gheorghieni 22", "Gheorghieni 23",
-            "Gheorghieni 24", "Gheorghieni 26", "Gheorghieni 27", "Gheorghieni 28", "Gheorghieni 29"})
+    @ValueSource(strings = {"Gheorghieni", "Gheorhieni", "GheorgXhieni", "GheorXhieni",
+            "Ghoerghieni", "heorghien", "GheorghieXX", "Gheorghieni 15-17",
+            "Gheorghieni 27-29-29A-31-33", "Gheorghieni 27"})
     void gheorghieniMatches(String words) throws IOException {
         urlContentIndexService.updateIndex();
 
-        List<UrlContentIndexRecord> matches = searcher.searchExact(words);
+        List<UrlContentIndexRecord> matches = searcher.searchWithBigMistakes(words);
         showMatches(words, matches);
         assertThat(matches).isNotEmpty();
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Gheorghieni 19-25", "Gheorghieni 30",
+    @ValueSource(strings = {"Gheorghieni 19-25", "Gheorghieni 19", "Gheorghieni 20",
+            "Gheorghieni 21", "Gheorghieni 22", "Gheorghieni 23", "Gheorghieni 24",
+            "Gheorghieni 26", "Gheorghieni 28", "Gheorghieni 29", "Gheorghieni 30",
             "Gheorghieni 31", "Gheorghieni 32", "Gheorghieni 33"})
     void gheorghieniMissed(String words) throws IOException {
         urlContentIndexService.updateIndex();
 
-        List<UrlContentIndexRecord> matches = searcher.searchExact(words);
+        List<UrlContentIndexRecord> matches = searcher.searchWithBigMistakes(words);
         showMatches(words, matches);
         assertThat(matches).isEmpty();
     }
@@ -59,7 +60,7 @@ class UrlContentIndexSearcherIT {
     void matching(String words) throws IOException {
         urlContentIndexService.updateIndex();
 
-        List<UrlContentIndexRecord> matches = searcher.searchExact(words);
+        List<UrlContentIndexRecord> matches = searcher.searchWithBigMistakes(words);
         showMatches(words, matches);
         assertThat(matches).isNotEmpty();
     }
@@ -70,7 +71,7 @@ class UrlContentIndexSearcherIT {
     void notMatching(String words) throws IOException {
         urlContentIndexService.updateIndex();
 
-        List<UrlContentIndexRecord> matches = searcher.searchExact(words);
+        List<UrlContentIndexRecord> matches = searcher.searchWithBigMistakes(words);
         assertThat(matches).isEmpty();
     }
 }

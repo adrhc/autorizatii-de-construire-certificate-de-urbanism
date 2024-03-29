@@ -27,7 +27,7 @@ class UrlContentIndexServiceIT {
     @Autowired
     private IndexRepository<String, UrlContentIndexRecord> indexRepository;
 
-    //    @Test
+    @Test
     void resetIndex() throws IOException {
         indexRepository.reset(Stream.of());
         updateIndex();
