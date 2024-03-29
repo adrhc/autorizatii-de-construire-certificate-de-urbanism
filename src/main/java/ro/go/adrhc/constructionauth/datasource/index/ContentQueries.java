@@ -16,17 +16,40 @@ import static ro.go.adrhc.constructionauth.datasource.index.UrlContentFieldType.
 public class ContentQueries {
     private final TokenizationUtils tokenizationUtils;
 
-    public Query create(String words) throws IOException {
+    public Query nearTokens(String words) throws IOException {
+        List<String> tokens = tokenizeAsList(words);
+        if (tokens.size() == 1) {
+            return CONTENT_QUERIES.tokenEquals(tokens.get(0));
+        } else {
+            return CONTENT_QUERIES.nearTokens(tokens);
+        }
+    }
+
+    public Query maxFuzziness(String words) throws IOException {
         List<String> tokens = tokenizeAsList(words);
         if (tokens.size() == 1) {
             String token = tokens.get(0);
             if (token.length() <= 2) {
                 return CONTENT_QUERIES.tokenEquals(token);
             } else {
-                return CONTENT_QUERIES.fuzzy(tokens.get(0));
+                return CONTENT_QUERIES.maxFuzziness(token);
             }
         } else {
-            return CONTENT_QUERIES.closeFuzzyTokens(tokens);
+            return CONTENT_QUERIES.maxFuzzinessNearTokens(tokens);
+        }
+    }
+
+    public Query lowFuzziness(String words) throws IOException {
+        List<String> tokens = tokenizeAsList(words);
+        if (tokens.size() == 1) {
+            String token = tokens.get(0);
+            if (token.length() <= 2) {
+                return CONTENT_QUERIES.tokenEquals(token);
+            } else {
+                return CONTENT_QUERIES.lowFuzziness(token);
+            }
+        } else {
+            return CONTENT_QUERIES.lowFuzzinessNearTokens(tokens);
         }
     }
 

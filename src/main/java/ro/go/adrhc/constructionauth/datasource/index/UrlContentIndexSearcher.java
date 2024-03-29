@@ -16,6 +16,6 @@ public class UrlContentIndexSearcher {
     private final ContentQueries contentQueries;
 
     public List<UrlContentIndexRecord> search(String words) throws IOException {
-        return indexRepository.findAllMatches(contentQueries.create(words));
+        return indexRepository.findAllMatches(contentQueries.lowFuzziness(words));
     }
 }
