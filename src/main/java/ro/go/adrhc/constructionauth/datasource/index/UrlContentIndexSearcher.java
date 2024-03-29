@@ -15,7 +15,15 @@ public class UrlContentIndexSearcher {
     private final IndexRepository<String, UrlContentIndexRecord> indexRepository;
     private final ContentQueries contentQueries;
 
-    public List<UrlContentIndexRecord> search(String words) throws IOException {
+    public List<UrlContentIndexRecord> searchExact(String words) throws IOException {
+        return indexRepository.findAllMatches(contentQueries.nearTokens(words));
+    }
+
+    public List<UrlContentIndexRecord> searchWithSmallMistakes(String words) throws IOException {
         return indexRepository.findAllMatches(contentQueries.lowFuzziness(words));
+    }
+
+    public List<UrlContentIndexRecord> searchWithBigMistakes(String words) throws IOException {
+        return indexRepository.findAllMatches(contentQueries.maxFuzziness(words));
     }
 }

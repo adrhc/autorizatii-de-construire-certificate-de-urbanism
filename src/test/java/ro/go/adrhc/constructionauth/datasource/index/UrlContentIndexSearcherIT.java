@@ -35,7 +35,7 @@ class UrlContentIndexSearcherIT {
     void gheorghieniMatches(String words) throws IOException {
         urlContentIndexService.updateIndex();
 
-        List<UrlContentIndexRecord> matches = searcher.search(words);
+        List<UrlContentIndexRecord> matches = searcher.searchExact(words);
         showMatches(words, matches);
         assertThat(matches).isNotEmpty();
     }
@@ -46,7 +46,7 @@ class UrlContentIndexSearcherIT {
     void gheorghieniMissed(String words) throws IOException {
         urlContentIndexService.updateIndex();
 
-        List<UrlContentIndexRecord> matches = searcher.search(words);
+        List<UrlContentIndexRecord> matches = searcher.searchExact(words);
         showMatches(words, matches);
         assertThat(matches).isEmpty();
     }
@@ -59,7 +59,7 @@ class UrlContentIndexSearcherIT {
     void matching(String words) throws IOException {
         urlContentIndexService.updateIndex();
 
-        List<UrlContentIndexRecord> matches = searcher.search(words);
+        List<UrlContentIndexRecord> matches = searcher.searchExact(words);
         showMatches(words, matches);
         assertThat(matches).isNotEmpty();
     }
@@ -70,7 +70,7 @@ class UrlContentIndexSearcherIT {
     void notMatching(String words) throws IOException {
         urlContentIndexService.updateIndex();
 
-        List<UrlContentIndexRecord> matches = searcher.search(words);
+        List<UrlContentIndexRecord> matches = searcher.searchExact(words);
         assertThat(matches).isEmpty();
     }
 }
