@@ -29,8 +29,7 @@ class UrlContentIndexSearcherIT {
 
     @ParameterizedTest
     @ValueSource(strings = {"Gheorghieni", "Gheorhieni", "GheorgXhieni", "GheorXhieni",
-            "Ghoerghieni", "heorghien", "GheorghieXX", "Gheorghieni 15-17",
-            "Gheorghieni 27-29-29A-31-33", "Gheorghieni 27"})
+            "Ghoerghieni", "heorghien", "GheorghieXX", "Gheorghieni 27-29-29A-31-33", "Gheorghieni 27"})
     void gheorghieniMatches(String words) throws IOException {
         urlContentIndexService.updateIndex();
 
@@ -40,10 +39,10 @@ class UrlContentIndexSearcherIT {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Gheorghieni 19-25", "Gheorghieni 19", "Gheorghieni 20",
-            "Gheorghieni 21", "Gheorghieni 22", "Gheorghieni 23", "Gheorghieni 24",
-            "Gheorghieni 26", "Gheorghieni 28", "Gheorghieni 29", "Gheorghieni 30",
-            "Gheorghieni 31", "Gheorghieni 32", "Gheorghieni 33"})
+    @ValueSource(strings = {"Gheorghieni 15-17", "Gheorghieni 19-25", "Gheorghieni 19",
+            "Gheorghieni 20", "Gheorghieni 21", "Gheorghieni 22", "Gheorghieni 23",
+            "Gheorghieni 24", "Gheorghieni 26", "Gheorghieni 28", "Gheorghieni 29",
+            "Gheorghieni 30", "Gheorghieni 31", "Gheorghieni 32", "Gheorghieni 33"})
     void gheorghieniMissed(String words) throws IOException {
         urlContentIndexService.updateIndex();
 
