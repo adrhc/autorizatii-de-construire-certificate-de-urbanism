@@ -5,13 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <!-- https://github.com/spring-projects/spring-shell/issues/324 -->
-        <version>3.1.0</version>
-        <!--
-            Spring Boot [2.7.0] is not compatible with this Spring Cloud release train',
-            action = 'Change Spring Boot version to one of the following versions [2.4.x, 2.5.x].
-        -->
-        <!--<version>2.7.0</version>-->
+        <version>3.2.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -30,17 +24,13 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.release>${java.version}</maven.compiler.release>
 
-        <maven-surefire-failsafe-plugin.version>3.1.2</maven-surefire-failsafe-plugin.version>
-
-        <!--        <org.mapstruct.version>1.5.2.Final</org.mapstruct.version>-->
-
-        <!-- spring-boot-starter-parent: 2.5.14 -->
-        <!--<spring-cloud.version>3.0.6</spring-cloud.version>-->
+        <maven-compiler-plugin-version>3.13.0</maven-compiler-plugin-version>
+        <maven-surefire-failsafe-plugin-version>3.2.5</maven-surefire-failsafe-plugin-version>
 
         <!-- spring-boot-starter-parent: 3.1.0 -->
-        <spring-cloud.version>2022.0.3</spring-cloud.version>
+        <spring-cloud.version>2023.0.1</spring-cloud.version>
 
-        <spring-shell.version>3.1.0</spring-shell.version>
+        <spring-shell.version>3.2.3</spring-shell.version>
     </properties>
 
     <dependencies>
@@ -114,7 +104,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <!--<version>3.13.0</version>-->
+                <version>${maven-compiler-plugin-version}</version>
                 <configuration>
                     <release>${java.version}</release>
                     <source>${java.version}</source>
@@ -128,7 +118,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-failsafe-plugin.version}</version>
+                <version>${maven-surefire-failsafe-plugin-version}</version>
                 <configuration>
                     <argLine>--enable-preview</argLine>
                 </configuration>
@@ -136,7 +126,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven-surefire-failsafe-plugin.version}</version>
+                <version>${maven-surefire-failsafe-plugin-version}</version>
                 <configuration>
                     <argLine>--enable-preview</argLine>
                 </configuration>
