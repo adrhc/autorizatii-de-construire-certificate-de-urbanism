@@ -35,6 +35,7 @@ public class IndexConfig {
 		return IndexServicesParamsFactoryBuilder.of(
 						UrlContentIndexRecord.class, UrlContentFieldType.class,
 						indexProperties.getPath())
-				.build().orElseThrow();
+				.build(indexProperties.isReadonly())
+				.orElseThrow();
 	}
 }

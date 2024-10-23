@@ -17,4 +17,5 @@ import java.nio.file.Path;
 @ToString
 public class IndexProperties {
 	private Path path;
+	private boolean readonly;
 }
