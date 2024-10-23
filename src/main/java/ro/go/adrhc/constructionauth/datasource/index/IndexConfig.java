@@ -25,7 +25,6 @@ public class IndexConfig {
 
 	@Bean
 	public FileSystemIndex<String, UrlContentIndexRecord> indexRepository() {
-		log.info("\nopening index: {}", indexProperties.getPath());
 		return FileSystemIndexImpl.of(indexServicesParamsFactory());
 	}
 
