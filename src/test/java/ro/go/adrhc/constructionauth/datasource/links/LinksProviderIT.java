@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @EnableConfigurationProperties
 @SpringBootTest(classes = {URLContentReader.class,
-		LinksParser.class, LinksExtractor.class, LinksProvider.class})
+		LinksParser.class, LinksExtractor.class, LinksProviderConfig.class})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
 class LinksProviderIT {
