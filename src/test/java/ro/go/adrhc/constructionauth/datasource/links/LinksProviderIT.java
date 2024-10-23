@@ -18,12 +18,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
 class LinksProviderIT {
-    @Autowired
-    private LinksProvider linksProvider;
+	@Autowired
+	private LinksProvider linksProvider;
 
-    @Test
-    void loadLinks() throws IOException {
-        Set<String> links = linksProvider.loadLinks();
-        assertThat(links).isNotEmpty();
-    }
+	@Test
+	void loadLinks() throws IOException {
+		Set<String> links = linksProvider.loadLinks();
+		assertThat(links).isNotEmpty();
+	}
 }

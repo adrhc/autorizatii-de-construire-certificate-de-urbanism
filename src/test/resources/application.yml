@@ -8,7 +8,7 @@ feign.client.config.default.loggerLevel: BASIC
 #index:
 #  path: ${user.home}/index-autorizatii-de-construire-certificate-de-urbanism
 
-# href=\"([^\"]+)\"\\s+class=\"button-read-more\"
-link-pattern: https:([^:"]+)\.pdf
+# href=\"[^\"]+\"\\s+class=\"button-read-more\"
+link-pattern: https:[^:"]+\.pdf
 
 links-source: https://sector5.ro/autorizatii-de-construire-certificate-de-urbanism/

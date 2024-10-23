@@ -16,31 +16,31 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 @Slf4j
 public class UrlContentProvider {
-    private final Collection<LinksProvider> linkProviders;
-    private final PdfTextExtractor pdfTextExtractor;
+	private final Collection<LinksProvider> linkProviders;
+	private final PdfTextExtractor pdfTextExtractor;
 
-    public Stream<UrlContent> load() {
-        return load(it -> true);
-    }
+	public Stream<UrlContent> load() {
+		return load(_ -> true);
+	}
 
-    public Stream<UrlContent> load(Predicate<String> linksFilter) {
-        return linkProviders.stream()
-                .flatMap(this::loadLinks)
-                .filter(linksFilter)
-                .map(this::extractText)
-                .flatMap(Optional::stream);
-    }
+	public Stream<UrlContent> load(Predicate<String> linksFilter) {
+		return linkProviders.stream()
+				.flatMap(this::loadLinks)
+				.filter(linksFilter)
+				.map(this::extractText)
+				.flatMap(Optional::stream);
+	}
 
-    private Optional<UrlContent> extractText(String url) {
-        return pdfTextExtractor.extractText(url).map(t -> new UrlContent(url, t));
-    }
+	private Optional<UrlContent> extractText(String url) {
+		return pdfTextExtractor.extractText(url).map(t -> new UrlContent(url, t));
+	}
 
-    private Stream<String> loadLinks(LinksProvider linksProvider) {
-        try {
-            return linksProvider.loadLinks().stream();
-        } catch (IOException ioe) {
-            log.error(ioe.getMessage(), ioe);
-        }
-        return Stream.empty();
-    }
+	private Stream<String> loadLinks(LinksProvider linksProvider) {
+		try {
+			return linksProvider.loadLinks().stream();
+		} catch (IOException ioe) {
+			log.error(ioe.getMessage(), ioe);
+		}
+		return Stream.empty();
+	}
 }

@@ -20,15 +20,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
 class PdfTextExtractorTest {
-    @Value("${:classpath:LISTA_CERTIFICATE_URBANISM_IAN-2024.pdf}")
-    private Resource pdf;
-    @Autowired
-    private PdfTextExtractor pdfTextExtractor;
+	@Value("${:classpath:LISTA_CERTIFICATE_URBANISM_IAN-2024.pdf}")
+	private Resource pdf;
+	@Autowired
+	private PdfTextExtractor pdfTextExtractor;
 
-    @Test
-    void extractText() throws IOException {
-        Optional<String> text = pdfTextExtractor.extractText(pdf.getFile());
-        assertThat(text).isNotEmpty();
-        log.info("\n{}", text);
-    }
+	@Test
+	void extractText() throws IOException {
+		Optional<String> text = pdfTextExtractor.extractText(pdf.getFile());
+		assertThat(text).isNotEmpty();
+		log.info("\n{}", text);
+	}
 }

@@ -16,5 +16,5 @@ import java.nio.file.Path;
 @Slf4j
 @ToString
 public class IndexProperties {
-    private Path path;
+	private Path path;
 }

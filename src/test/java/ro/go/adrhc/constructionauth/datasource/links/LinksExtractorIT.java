@@ -19,14 +19,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
 class LinksExtractorIT {
-    @Value("${links-source}")
-    private String linksSource;
-    @Autowired
-    private LinksExtractor linksExtractor;
+	@Value("${links-source}")
+	private String linksSource;
+	@Autowired
+	private LinksExtractor linksExtractor;
 
-    @Test
-    void load() throws IOException {
-        Set<String> links = linksExtractor.loadLinks(linksSource);
-        assertThat(links).isNotEmpty();
-    }
+	@Test
+	void load() throws IOException {
+		Set<String> links = linksExtractor.loadLinks(linksSource);
+		assertThat(links).isNotEmpty();
+	}
 }

@@ -15,43 +15,43 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class PdfTextExtractor {
-    private final URLContentReader urlContentReader;
+	private final URLContentReader urlContentReader;
 
-    public Optional<String> extractText(String url) {
-        return urlContentReader
-                .readBytes(url)
-                .flatMap(this::loadPDF)
-                .flatMap(this::extractText);
-    }
+	public Optional<String> extractText(String url) {
+		return urlContentReader
+				.readBytes(url)
+				.flatMap(this::loadPDF)
+				.flatMap(this::extractText);
+	}
 
-    public Optional<String> extractText(File pdfFile) {
-        return this.loadPDF(pdfFile).flatMap(this::extractText);
-    }
+	public Optional<String> extractText(File pdfFile) {
+		return this.loadPDF(pdfFile).flatMap(this::extractText);
+	}
 
-    private Optional<String> extractText(PDDocument pdDocument) {
-        try {
-            return Optional.of(new PDFTextStripper().getText(pdDocument));
-        } catch (IOException ioe) {
-            log.error(ioe.getMessage(), ioe);
-        }
-        return Optional.empty();
-    }
+	private Optional<String> extractText(PDDocument pdDocument) {
+		try {
+			return Optional.of(new PDFTextStripper().getText(pdDocument));
+		} catch (IOException ioe) {
+			log.error(ioe.getMessage(), ioe);
+		}
+		return Optional.empty();
+	}
 
-    private Optional<PDDocument> loadPDF(File file) {
-        try {
-            return Optional.of(Loader.loadPDF(file));
-        } catch (IOException ioe) {
-            log.error(ioe.getMessage(), ioe);
-        }
-        return Optional.empty();
-    }
+	private Optional<PDDocument> loadPDF(File file) {
+		try {
+			return Optional.of(Loader.loadPDF(file));
+		} catch (IOException ioe) {
+			log.error(ioe.getMessage(), ioe);
+		}
+		return Optional.empty();
+	}
 
-    private Optional<PDDocument> loadPDF(byte[] bytes) {
-        try {
-            return Optional.of(Loader.loadPDF(bytes));
-        } catch (IOException ioe) {
-            log.error(ioe.getMessage(), ioe);
-        }
-        return Optional.empty();
-    }
+	private Optional<PDDocument> loadPDF(byte[] bytes) {
+		try {
+			return Optional.of(Loader.loadPDF(bytes));
+		} catch (IOException ioe) {
+			log.error(ioe.getMessage(), ioe);
+		}
+		return Optional.empty();
+	}
 }

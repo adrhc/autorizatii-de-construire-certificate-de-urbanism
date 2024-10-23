@@ -11,17 +11,17 @@ import java.util.regex.Pattern;
 
 @Component
 public class LinksParser {
-    @Autowired
-    @Value("${link-pattern}")
-    private String pattern;
+	@Autowired
+	@Value("${link-pattern}")
+	private String pattern;
 
-    public Set<String> parseLinks(String page) {
-        Set<String> links = new HashSet<>();
-        Pattern p = Pattern.compile(pattern);
-        Matcher m = p.matcher(page);
-        while (m.find()) {
-            links.add(m.group().replace("\\/", "/"));
-        }
-        return links;
-    }
+	public Set<String> parseLinks(String page) {
+		Set<String> links = new HashSet<>();
+		Pattern p = Pattern.compile(pattern);
+		Matcher m = p.matcher(page);
+		while (m.find()) {
+			links.add(m.group().replace("\\/", "/"));
+		}
+		return links;
+	}
 }

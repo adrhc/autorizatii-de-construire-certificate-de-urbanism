@@ -21,16 +21,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
 class LinksParserTest {
-    @Value("${:classpath:sector5-start.html}")
-    private Resource sector5StartPage;
+	@Value("${:classpath:sector5-start.html}")
+	private Resource sector5StartPage;
 
-    @Autowired
-    private LinksParser parser;
+	@Autowired
+	private LinksParser parser;
 
-    @Test
-    void parseLinks() throws IOException {
-        String page = sector5StartPage.getContentAsString(StandardCharsets.UTF_8);
-        Set<String> links = parser.parseLinks(page);
-        assertThat(links).isNotEmpty();
-    }
+	@Test
+	void parseLinks() throws IOException {
+		String page = sector5StartPage.getContentAsString(StandardCharsets.UTF_8);
+		Set<String> links = parser.parseLinks(page);
+		assertThat(links).isNotEmpty();
+	}
 }

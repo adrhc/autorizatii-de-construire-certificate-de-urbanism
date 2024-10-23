@@ -17,14 +17,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
 class UrlContentProviderIT {
-    @Autowired
-    private UrlContentProvider urlContentProvider;
+	@Autowired
+	private UrlContentProvider urlContentProvider;
 
-    @Test
-    void load() {
-        Optional<UrlContent> urlContentOptional = urlContentProvider.load().findAny();
-        assertThat(urlContentOptional).isNotEmpty();
-        UrlContent urlContent = urlContentOptional.get();
-        log.info("\n{}:\n{}", urlContent.url(), urlContent.text());
-    }
+	@Test
+	void load() {
+		Optional<UrlContent> urlContentOptional = urlContentProvider.load().findAny();
+		assertThat(urlContentOptional).isNotEmpty();
+		UrlContent urlContent = urlContentOptional.get();
+		log.info("\n{}:\n{}", urlContent.url(), urlContent.text());
+	}
 }

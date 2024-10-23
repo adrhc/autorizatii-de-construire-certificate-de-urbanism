@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class LinksProviderConfig {
-    @Bean
-    public LinksProvider linksProvider(LinksExtractor linksExtractor,
-            @Value("${links-source}") String linksSource) {
-        return new LinksProvider(linksSource, linksExtractor);
-    }
+	@Bean
+	public LinksProvider linksProvider(LinksExtractor linksExtractor,
+			@Value("${links-source}") String linksSource) {
+		return new LinksProvider(linksSource, linksExtractor);
+	}
 }
