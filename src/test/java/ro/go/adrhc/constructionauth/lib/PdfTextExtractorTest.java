@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
-import ro.go.adrhc.constructionauth.ConstructionAuthConfig;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -16,7 +15,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @EnableConfigurationProperties
-@SpringBootTest(classes = ConstructionAuthConfig.class)
+@SpringBootTest(classes = {URLContentReader.class, PdfTextExtractor.class})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
 class PdfTextExtractorTest {
