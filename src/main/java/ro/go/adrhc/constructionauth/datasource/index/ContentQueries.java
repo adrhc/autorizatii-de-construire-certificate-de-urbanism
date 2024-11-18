@@ -25,20 +25,6 @@ public class ContentQueries {
 		}
 	}
 
-	public Query maxFuzziness(String words) throws IOException {
-		List<String> tokens = tokenizeAsList(words);
-		if (tokens.size() == 1) {
-			String token = tokens.getFirst();
-			if (token.length() <= 2) {
-				return CONTENT_QUERIES.tokenEquals(token);
-			} else {
-				return CONTENT_QUERIES.maxFuzziness(token);
-			}
-		} else {
-			return CONTENT_QUERIES.maxFuzzinessNearTokens(tokens);
-		}
-	}
-
 	public Query lowFuzziness(String words) throws IOException {
 		List<String> tokens = tokenizeAsList(words);
 		if (tokens.size() == 1) {
@@ -50,6 +36,20 @@ public class ContentQueries {
 			}
 		} else {
 			return CONTENT_QUERIES.lowFuzzinessNearTokens(tokens);
+		}
+	}
+
+	public Query maxFuzziness(String words) throws IOException {
+		List<String> tokens = tokenizeAsList(words);
+		if (tokens.size() == 1) {
+			String token = tokens.getFirst();
+			if (token.length() <= 2) {
+				return CONTENT_QUERIES.tokenEquals(token);
+			} else {
+				return CONTENT_QUERIES.maxFuzziness(token);
+			}
+		} else {
+			return CONTENT_QUERIES.maxFuzzinessNearTokens(tokens);
 		}
 	}
 
