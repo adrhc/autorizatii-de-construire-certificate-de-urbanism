@@ -19,7 +19,7 @@ public class ContentQueries {
 	public Query nearTokens(String words) throws IOException {
 		List<String> tokens = tokenizeAsList(words);
 		if (tokens.size() == 1) {
-			return CONTENT_QUERIES.tokenEquals(tokens.get(0));
+			return CONTENT_QUERIES.tokenEquals(tokens.getFirst());
 		} else {
 			return CONTENT_QUERIES.nearTokens(tokens);
 		}
