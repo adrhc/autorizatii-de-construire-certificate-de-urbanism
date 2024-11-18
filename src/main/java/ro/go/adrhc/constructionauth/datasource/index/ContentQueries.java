@@ -28,7 +28,7 @@ public class ContentQueries {
 	public Query maxFuzziness(String words) throws IOException {
 		List<String> tokens = tokenizeAsList(words);
 		if (tokens.size() == 1) {
-			String token = tokens.get(0);
+			String token = tokens.getFirst();
 			if (token.length() <= 2) {
 				return CONTENT_QUERIES.tokenEquals(token);
 			} else {
@@ -42,7 +42,7 @@ public class ContentQueries {
 	public Query lowFuzziness(String words) throws IOException {
 		List<String> tokens = tokenizeAsList(words);
 		if (tokens.size() == 1) {
-			String token = tokens.get(0);
+			String token = tokens.getFirst();
 			if (token.length() <= 2) {
 				return CONTENT_QUERIES.tokenEquals(token);
 			} else {
